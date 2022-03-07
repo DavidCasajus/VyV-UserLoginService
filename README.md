@@ -1,0 +1,1 @@
+Set of exercises to work with different test doubles :)
