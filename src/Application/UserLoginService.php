@@ -62,16 +62,23 @@ class UserLoginService
         }
     }
 
-    public function loginSecure(String $username,String $password) :string
+    public function secureLogin(String $username,String $password) :string
     {
         try {
-            $this->sessionManager->loginSecure($username,$password);
+            $this->sessionManager->secureLogin($username,$password);
         }catch (Exception $ex)
         {
-            if($ex->getMessage() == "No se pudo conectar con el servidor"){
-                return "No se pudo conectar con el servidor";
+            if($ex->getMessage() == "1"){
+                return "Contraseña incorrecta";
+            }
+            if($ex->getMessage() == "2"){
+                return "Usuario incorrecto";
+            }
+            if($ex->getMessage() == "3"){
+                return "Error en el servidor";
             }
         }
+        return true;
     }
 
 

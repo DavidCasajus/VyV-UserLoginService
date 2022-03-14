@@ -10,5 +10,5 @@ interface SessionManager
 
     public function  logout(User $user): bool;
 
-    public function loginSecure(string $userName, string $password): bool;
+    public function secureLogin(string $userName, string $password): bool;
 }

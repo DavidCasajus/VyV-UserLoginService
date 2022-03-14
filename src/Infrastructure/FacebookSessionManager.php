@@ -26,7 +26,7 @@ class FacebookSessionManager implements SessionManager
         return true;
     }
 
-    public function loginSecure(string $userName, string $password): bool
+    public function secureLogin(string $userName, string $password): bool
     {
         // TODO: Implement loginSecure() method.
     }

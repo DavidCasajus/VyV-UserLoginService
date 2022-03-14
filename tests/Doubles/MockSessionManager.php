@@ -1,10 +1,12 @@
 <?php
+
 namespace UserLoginService\Tests\Doubles;
-use phpDocumentor\Reflection\Types\Boolean;
+
+use PHPUnit\Util\Exception;
 use UserLoginService\Application\SessionManager;
 use UserLoginService\Domain\User;
 
-class StubSessionManager implements SessionManager
+class MockSessionManager implements SessionManager
 {
 
     public function getSessions(): int
@@ -14,7 +16,7 @@ class StubSessionManager implements SessionManager
 
     public function login(string $userName, string $password): bool
     {
-        return false;
+        return true;
     }
 
     public function logout(User $user): bool
@@ -24,6 +26,15 @@ class StubSessionManager implements SessionManager
 
     public function secureLogin(string $userName, string $password): bool
     {
+        if($userName == "user_name" && $password != "password")
+        {
+            throw (new Exception("1"));
+        }else if ($userName == "user_name")
+        {
+            throw (new Exception("2"));
+        }else{
+            throw (new Exception("3"));
+        }
         return true;
     }
 }

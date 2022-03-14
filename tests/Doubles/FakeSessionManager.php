@@ -28,7 +28,7 @@ class FakeSessionManager implements SessionManager
         return true;
     }
 
-    public function loginSecure(string $userName, string $password): bool
+    public function secureLogin(string $userName, string $password): bool
     {
         if($userName == "user_name" && $password != "password")
         {
@@ -39,5 +39,6 @@ class FakeSessionManager implements SessionManager
         }else{
             throwException(new \Exception("3"));
         }
+        return false;
     }
 }
